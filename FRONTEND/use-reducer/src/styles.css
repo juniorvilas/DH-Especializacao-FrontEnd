@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+header .icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+header .icon-wrapper .menu {
+}
+header .icon-wrapper .logo {
+  margin-left: 20px;
+}
+header form {
+  width: 20%;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+header form #search {
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  outline: none;
+  color: #888;
+}
+header form button[type="submit"] {
+  padding: 8px 20px;
+  border: none;
+  border-left: 1px solid #ccc;
+  background: #f8f8f8;
+}
+
+header .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: #999;
+}
+
+main {
+  padding-top: 50px;
+  text-align: center;
+}
+
+main ul {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-top: 20px;
+}
+
+main .buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+main .buttons button {
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  padding: 5px 10px;
+  cursor: pointer;
+}

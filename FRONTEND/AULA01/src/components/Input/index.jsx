@@ -7,10 +7,10 @@ const Input = ({ name, label, type = "text",  shouldFocus = false,
 isPokemon = false, }) => {
   // Aqui devemos acessar o estado global para obter os dados
   // do formulário e uma maneira de atualizá-los.
-
-  const ref = useRef();
-
   const { handleInputBlur, fomulario } = useContext(ContextoFormulario);
+
+  //criamos uma ref para dar o focus() assim que a pagina é carregada
+  const ref = useRef(null);  
 
 
   // Além disso, usaremos um estado local para lidar com o estado da input.
@@ -22,7 +22,7 @@ isPokemon = false, }) => {
   };
 
   const onBlur = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //passammos o preventDefault para não recarregar a pagina a cada onBlur
     // Aqui devemos atualizar o estado global com os dados de
     // cada entrada.
     // DICA: Podemos usar o nome de cada entrada para salvar
@@ -33,7 +33,7 @@ isPokemon = false, }) => {
     });
   };
 
-  //Depois que a pagina carrega focamos no input usando a ref
+  //Depois que a pagina carrega focamo no primeiro input usando a ref, que passamos como parametro para o input do formulario
   useEffect(() => {
     if (ref.current && shouldFocus) {
       ref.current.focus();

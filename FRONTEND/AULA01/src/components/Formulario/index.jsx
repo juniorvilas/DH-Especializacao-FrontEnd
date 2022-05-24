@@ -12,6 +12,11 @@ import Detalhe from "./detalhe";
 // Lembre-se qual é o passo que devemos dar para que nosso
 // componentes podem consumir um estado global.
 
+/**
+ * Componente que exibe os inputs do formulário
+ * 
+ * @returns {JSX.Element}
+ */
 const Formulario = () => {
   return (
     <>

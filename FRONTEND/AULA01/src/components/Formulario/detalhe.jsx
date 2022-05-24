@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
 import { ContextoFormulario } from "../../context/contextoFormulario";
 
+/**
+ * Componente que mostra os detalhes do fomulário
+ * 
+ * @returns {JSX.Element}
+ */
+
 const Detalhe = () => {
-  // Utilizando o ContextoFormulario pegamos os dados do formulário para podermos mostrá-lo em a visualização.
+
+  /**  Utilizando o ContextoFormulario pegamos os dados do formulário para podermos mostrá-lo em a visualização.*/
   const { formulario } = useContext(ContextoFormulario);
 
-// Dessa forma conseguimos criar os objetos treinador e pokemon
+/** Dessa forma conseguimos criar os objetos treinador e pokemon  */
   const { 
     nome,
     apelido,

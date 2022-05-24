@@ -3,8 +3,27 @@ import { ContextoFormulario } from "../../context/contextoFormulario"
 
 
 // acrecenta uma props shouldFocus que informa se deve focar o input
-const Input = ({ name, label, type = "text",  shouldFocus = false,
-isPokemon = false, }) => {
+
+
+/**
+ * Componente que controla os inputs do formulário
+ * 
+ * @param {{
+ *  name: string, 
+ * label:string, 
+ * type: string,  
+ * shouldFocus: boolean, 
+ * isPokemon: boolean, 
+ * }} props
+ * @returns {JSX.Element}
+ */
+const Input = ({ 
+  name, 
+  label, 
+  type = "text",  
+  shouldFocus = false,
+  isPokemon = false, 
+}) => {
   // Aqui devemos acessar o estado global para obter os dados
   // do formulário e uma maneira de atualizá-los.
   const { handleInputBlur, fomulario } = useContext(ContextoFormulario);
@@ -16,11 +35,20 @@ isPokemon = false, }) => {
   // Além disso, usaremos um estado local para lidar com o estado da input.
   const [stateInput, setStateInput] = useState("");
 
+  /**
+   * Função que atualiza os estado local do input
+   * 
+   * @param {Event} e 
+   */
   const onChange = (e) => {
-    // Aqui devemos atualizar o estado local do input
     setStateInput(e.target.value);
   };
 
+  /**
+   * Função funciona quando perde o foco do input e atualiza o estado global com dados de cada entrada
+   * 
+   * @param {Event} e
+   */
   const onBlur = (e) => {
     e.preventDefault(); //passammos o preventDefault para não recarregar a pagina a cada onBlur
     // Aqui devemos atualizar o estado global com os dados de

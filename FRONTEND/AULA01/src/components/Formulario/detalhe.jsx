@@ -3,7 +3,7 @@ import { ContextoFormulario } from "../../context/contextoFormulario";
 
 /**
  * Componente que mostra os detalhes do fomulário
- * 
+ * @author Carlindo Junior
  * @returns {JSX.Element}
  */
 

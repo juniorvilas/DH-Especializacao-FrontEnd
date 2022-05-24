@@ -14,7 +14,7 @@ import Detalhe from "./detalhe";
 
 /**
  * Componente que exibe os inputs do formulário
- * 
+ * @author Carlindo Junior
  * @returns {JSX.Element}
  */
 const Formulario = () => {

@@ -7,7 +7,7 @@ import { ContextoFormulario } from "../../context/contextoFormulario"
 
 /**
  * Componente que controla os inputs do formulário
- * 
+ * @author Carlindo Junior
  * @param {{
  *  name: string, 
  * label:string, 
@@ -37,7 +37,7 @@ const Input = ({
 
   /**
    * Função que atualiza os estado local do input
-   * 
+   * @author Carlindo Junior
    * @param {Event} e 
    */
   const onChange = (e) => {
@@ -46,7 +46,7 @@ const Input = ({
 
   /**
    * Função funciona quando perde o foco do input e atualiza o estado global com dados de cada entrada
-   * 
+   * @author Carlindo Junior
    * @param {Event} e
    */
   const onBlur = (e) => {

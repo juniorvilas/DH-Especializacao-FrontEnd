@@ -4,7 +4,7 @@ import pokebola from "../../assets/pokebola.png";
 
 /**
  * Componente que mostra o header
- * 
+ * @author Carlindo Junior
  * @returns {JSX.Element}
  */
 const Inicio = () => {

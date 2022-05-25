@@ -1,5 +1,6 @@
 // Aqui devemos criar nosso contexto e nosso provider.
 import { useReducer, createContext } from "react";
+import PropTypes from 'prop-types';
 
 
 /**
@@ -118,6 +119,10 @@ const ProviderFormulario = ({ children }) => {
             {children}
         </ContextoFormulario.Provider>
     );
+};
+
+ProviderFormulario.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element)
 };
 
 export default ProviderFormulario;

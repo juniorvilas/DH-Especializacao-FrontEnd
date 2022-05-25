@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { ContextoFormulario } from "../../context/contextoFormulario"
-
+import PropTypes from 'prop-types';
 
 // acrecenta uma props shouldFocus que informa se deve focar o input
+
 
 
 /**
@@ -82,6 +83,14 @@ const Input = ({
       />
     </div>
   );
+};
+
+Input.propTypes = {
+  name: PropTypes.string,
+  Label: PropTypes.string,
+  type: PropTypes.string,
+  shouldFocus:PropTypes.bool,
+  isInput: PropTypes.bool
 };
 
 export default Input;

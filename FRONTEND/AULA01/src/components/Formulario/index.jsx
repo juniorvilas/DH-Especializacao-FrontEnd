@@ -1,11 +1,17 @@
 import React from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import ProviderFormulario from "../../context/contextoFormulario";
 import pokebola from "../../assets/pokebola.png";
 import treinador from "../../assets/treinador.png";
 import pikachu from "../../assets/pikachu.png";
+import { getPokemonTypes } from "../Api/Api_tipo"
 import Input from "../Input";
+import Select from "../Select";
 import Detalhe from "./detalhe";
+import InputEspecie from "../InputEspecie/InputEspecie";
+
+
 
 // Neste componente temos nosso formulário e dentro dele
 // temos os componentes que precisam consumir nosso estado.
@@ -18,6 +24,13 @@ import Detalhe from "./detalhe";
  * @returns {JSX.Element}
  */
 const Formulario = () => {
+
+  const { 
+    data: tipos,
+    isLoading,
+    isError,
+  } = useQuery("pokemonTypes", getPokemonTypes)
+
   return (
     <>
       <header className="form-header">
@@ -52,7 +65,13 @@ const Formulario = () => {
                   <span>Pokémon</span>
                 </p>
                 <Input name="nomePokemon" label="Nome" isPokemon={true} />
-                <Input name="tipoPokemon" label="Tipo" isPokemon={true} />
+                <Select
+                  name="tipoPokemon"
+                  label="Tipo"
+                  options={tipos}
+                  isPokemon={true}
+                  disabled={isLoading || isError} // Desativamos o input se estiver carregando ou se houver um erro
+                />
                 <Input
                   name="elementoPokemon"
                   label="Elemento"
@@ -60,6 +79,7 @@ const Formulario = () => {
                 />
                 <Input name="alturaPokemon" label="Altura" isPokemon={true} />
                 <Input name="idadePokemon" label="Idade" isPokemon={true} />
+                <InputEspecie name="especiePokemon" label="Especie" isPokemon={true} />
               </div>
             </div>
             <Detalhe />

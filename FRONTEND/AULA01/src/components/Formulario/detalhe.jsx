@@ -1,5 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useMutation } from "react-query";
+import { enviarSolicitacao } from "../Api/api_post_form";
 import { ContextoFormulario } from "../../context/contextoFormulario";
+
 
 /**
  * Componente que mostra os detalhes do fomulário
@@ -8,6 +11,8 @@ import { ContextoFormulario } from "../../context/contextoFormulario";
  */
 
 const Detalhe = () => {
+  //hook useMutation para enviar solicitação ao fomulário
+  const { data, isLoading, isError, mutate, isSuccess } = useMutation(enviarSolicitacao);
 
   /**  Utilizando o ContextoFormulario pegamos os dados do formulário para podermos mostrá-lo em a visualização.*/
   const { formulario } = useContext(ContextoFormulario);
@@ -25,7 +30,17 @@ const Detalhe = () => {
     elementoPokemon,
     alturaPokemon,
     idadePokemon,
+    especiePokemon,
   } = formulario?.pokemon;
+
+  //utilizamos o useEffect para exibir um alerta caso isSucess ou isError for true
+  useEffect(() => {
+    if(isSuccess) {
+      alert("Formulário enviado com sucesso!")
+    } else if (isError) {
+      alert("Error ao enviar Formulário")
+    }
+  }, [isSuccess, data, isError])
 
   return (
     <div className="detalhe-formulario">
@@ -48,13 +63,11 @@ const Detalhe = () => {
           <p>Elemento: {elementoPokemon}</p>
           <p>Altura: {alturaPokemon}</p>
           <p>Idade: {idadePokemon}</p>
+          <p>Especie: {especiePokemon}</p>
         </div>
       </section>
-      <button
-        className="botao-enviar"
-        onClick={() => alert("Solicitação enviada :)")}
-      >
-        Enviar Solicitação
+      <button className="botao-enviar" onClick={() => mutate(formulario)}>
+        {isLoading ? "Enviando formulario..." : "Enviar Solicitação"}
       </button>
     </div>
   );

@@ -103,12 +103,17 @@ h1 {
   width: 100%;
 }
 
-.input-receptor input {
+.input-receptor input,
+.input-receptor select {
   padding: 1rem;
   width: 300px;
   border-radius: 10px;
   border-style: solid;
   margin-left: 1rem;
+}
+
+.input-receptor select{
+  width: 338px;
 }
 
 .formulario-entrada .corpo-formulario {
@@ -124,6 +129,7 @@ h1 {
 
 .detalhe-formulario {
   width: 70%;
+  height: 880px;
   border: 1px solid darkgray;
   margin: 0 3rem;
   border-radius: 6px;
@@ -166,7 +172,28 @@ h1 {
   color: #ed5564;
 }
 
-.botao-enviar {
+.button-anterior {
+  margin-right: 20px;
+}
+
+.button-especie {
+  margin-right: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2.5rem;
+  border-radius: 10px;
+  background-color: rgb(235, 159, 159);
+  color: #ed5564 ;
+  font-weight: bold;
+  font-family: "Pokemon", sans-serif;
+  border: 2px solid #ed5564;
+  box-shadow: 4px 4px 4px lightgray;
+  margin-bottom: 1rem;
+  align-self: flex-end;
+}
+
+.botao-enviar,
+.button-selecionar-especies {
   padding: 0.6rem 3rem;
   border-radius: 10px;
   background-color: #ed5564;
@@ -179,7 +206,25 @@ h1 {
   align-self: flex-end;
 }
 
-.botao-enviar:hover {
+.button-anterior,
+.button-seguinte {
+  padding: 0.6rem 3rem;
+  border-radius: 10px;
+  background-color: #acacb3;
+  color: rgb(89, 75, 193);
+  font-weight: bold;
+  font-family: "Pokemon", sans-serif;
+  border: 2px solid rgb(89, 75, 193);
+  box-shadow: 4px 4px 4px lightgray;
+  margin-bottom: 1rem;
+  align-self: flex-end;
+}
+
+.botao-enviar,
+.button-especie,
+.button-anterior,
+.button-seguinte,
+.button-selecionar-especies:hover {
   box-shadow: none;
   cursor: pointer;
 }
@@ -208,4 +253,17 @@ h1 {
 
 .retorna {
   justify-self: end;
+}
+
+.input-especies {
+  padding-bottom: 150px;
+}
+
+.paginador {
+  margin-top: 20px;
+  
+}
+
+.especies {  
+  background-color: whitesmoke;
 }

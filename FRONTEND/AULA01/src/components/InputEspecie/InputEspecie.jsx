@@ -3,15 +3,9 @@ import { useQuery } from "react-query";
 import { ContextoFormulario } from "../../context/contextoFormulario";
 import { getPokemonEspecies } from "../Api/api_especies";
 
-// Debemos reemplazar este array por los datos provenientes de la API.
-/* const especies = [
-  { name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon-species/1/" },
-  { name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon-species/2/" },
-  { name: "venusaur", url: "https://pokeapi.co/api/v2/pokemon-species/3/" },
-]; */
-
 
 const InputEspecie = ({ name, label }) => {
+  
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const { handleInputBlur } = useContext(ContextoFormulario);
 
@@ -41,6 +35,7 @@ const InputEspecie = ({ name, label }) => {
     setPage((prevPagina) => Math.max(prevPagina - 1, 1));
   console.log(data)
   console.log(page);
+
   const escolherEspecie = (e, nomeEspecie) => {
     e.preventDefault();
 

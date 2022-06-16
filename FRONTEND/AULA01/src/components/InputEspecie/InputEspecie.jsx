@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useRef } from "react-query";
 import { ContextoFormulario } from "../../context/contextoFormulario";
 import { getPokemonEspecies } from "../Api/api_especies";
 
@@ -28,6 +28,9 @@ const InputEspecie = ({ name, label }) => {
 
   console.log(data);
 
+  const ref = useRef(null);
+  console.log(ref);
+  
   const incrementarPagina = () =>
     setPage((prevPagina) => Math.min(prevPagina + 1, 897));
 

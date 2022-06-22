@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
+import  Aula15 from './Aula15';
 import './App.css';
 
-interface IPokemon {
+/* interface IPokemon {
   readonly id: number;
   nome: string;
   kilos?: number;
@@ -10,13 +11,13 @@ interface IPokemon {
   categoria: string;
   img?: string;
 
-}
+} */
 
 
 
 function App() {
 
-  const pokemons: IPokemon[] = [
+/*   const pokemons: IPokemon[] = [
     {
       id: 1,
       nome: "bulbasaur",
@@ -48,7 +49,7 @@ function App() {
       categoria: "treinador",
       img: "https://wp.radiojhero.com/wp-content/uploads/2019/09/ash-1180551-1280x0.jpeg",
     },
-   ];
+   ]; */
   
   
 
@@ -68,6 +69,7 @@ function App() {
    return (
     <div className="App">
       <header className="App-header">
+        <Aula15/>
    {/*      <p>Nome: {name}</p>
         <p>Nascimento: {birthDate}</p>
         <p>Apelido: {nickName}</p>
@@ -76,14 +78,14 @@ function App() {
         <p>Região: {region}</p>
         <p>Idade: {age}</p>
         <button onClick={getAge}>Calcular Idade</button> */}
-        {pokemons.map( pokemon => <div style={{border: '1px solid white', width: '500px', display: 'flex', flexDirection: 'column', margin: '2rem 0px', padding: '0px'}}>
+     {/*    {pokemons.map( pokemon => <div style={{border: '1px solid white', width: '500px', display: 'flex', flexDirection: 'column', margin: '2rem 0px', padding: '0px'}}>
           <p>ID: {pokemon.id}</p>
           <p>Nome: {pokemon.nome}</p>
           <p>Peso: {pokemon.kilos ? pokemon.kilos : "Peso não informado"}</p>
           <p>É um pokemon? {pokemon.pokemon? "Sim" : "Não"}</p>
           <p>Categoria: {pokemon.categoria}</p>
           <img style={{ width: '500px', margin: '0'}} src={pokemon.img} alt="imagem pokemon" />
-        </div>)}
+        </div>)} */}
       </header>
     </div>
   );

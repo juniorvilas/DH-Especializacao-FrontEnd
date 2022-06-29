@@ -44,3 +44,26 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+# Especialização Front End
+## Mesa de Trabalho - Aula 19
+
+Thunk
+Objetivo
+Olá Houser, tudo bem com você? Nesta atividade vamos trabalhar os conceitos abordados na aula. 
+A ideia é criar uma aplicação que envolve os conceitos mostrados nesta aula.
+Instruções e requisitos do entregável
+
+- Criar uma aplicação nova e configure o Redux com Redux Thunk.
+- Criar um orderReducer com um array de produtos vazio como estado inicial.
+- Criar um case no switch da action que retorne um array vazio para os produtos (simulando a ação de limpar o carrinho).
+- Utilize o orderReducer no store configurado.
+- Criar uma Action com o mesmo type utilizado no switch do orderReducer e com payload sendo um array vazio (action para limpar o carrinho).
+- Criar uma Action que guarde em uma variável os produtos do reducer e faça uma requisição para uma API com axios passando os produtos como body da requisição.
+- Caso a requisição da Action acima tiver sucesso, executar a Action para limpar o carrinho.
+- No App.js criar um botão que quando clicado dê o dispatch na Action criada que faz a requisição externa.
+
+Conclusão
+Parabéns! Você acaba de criar um projeto React com os principais recursos do Redux.
+
+

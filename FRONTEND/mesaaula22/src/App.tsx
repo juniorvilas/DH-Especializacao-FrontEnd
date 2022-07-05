@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import './App.css';
 
 import { connect } from 'react-redux';
-import { fetchProductsThunk, fetchProductsStarted } from './store/actions/products.action'
+import { fetchProductsThunk, filterProductsThunk, fetchProductsStarted } from './store/actions/products.action'
 
 type GlobalState = {
-  products: {
+  prod: {
     products: {
       id: number;
       title: string;
@@ -21,35 +21,43 @@ type GlobalState = {
       }
     }[];
     isFetching: boolean;
+    errorMessage: string;
   }
 }
 
 function App() {
-  const products = useSelector((state: GlobalState) => state.products);
-  const dispatch = useDispatch();
-  console.log(products);
-
+  const prod = useSelector((state: GlobalState) => state.prod);
+  const dispatch = useDispatch();  
+  const [texto, setTexto] = useState();
 
   useEffect(() => {   
 
     dispatch(fetchProductsStarted());
-    fetchProductsThunk()(dispatch);
-    console.log("useEffect")
-    
-  });
+    fetchProductsThunk()(dispatch);   
 
-  function handleSaveOrder() {
-    dispatch(fetchProductsStarted());
-    fetchProductsThunk()(dispatch);
+  },[dispatch]);
+
+const handlerClick = () => {
+  if (!texto) {
+    fetchProductsThunk()(dispatch);  
+  } else {
+    filterProductsThunk(texto)(dispatch);
   }
+}
+
+const handlerOnChange = (e: any) =>  {
+  setTexto(e.target.value);
+}
 
 
   return (
     <div className="App">
       <header className="App-header">
-        <button type="button" onClick={handleSaveOrder}>Salvar</button>
-        {products.isFetching && <span>Carregando...</span>}
-        {products.products && products.products.map((product: any) => (
+       <input style={{margin: 20}} type="text" value={texto} onChange={handlerOnChange} />
+       <button type="button" onClick={handlerClick}>Pesquisar</button>
+        {prod.errorMessage && <span>Opa deu erro: {prod.errorMessage}</span>}
+        {prod.isFetching && <span>Carregando...</span>}
+        {prod.products && prod.products.map((product: any) => (
             <div key={product.id}>
               <p>{product.title}</p>
             </div>
@@ -61,11 +69,11 @@ function App() {
 
 
 const mapStateToProps = (state: any) => ({
- products: state,
+ products: state.prod.products,
 });
 
 const mapDispatchToProps = (dispatch: any) => bindActionCreators(
-    { fetchProductsThunk },
+    { fetchProductsThunk, filterProductsThunk },
    dispatch,
  );
 

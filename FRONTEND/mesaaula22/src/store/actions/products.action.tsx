@@ -9,6 +9,14 @@ export const FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR';
 type Product = {
     id: number;
     title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+        rate: number;
+        count: number;
+      }
 }
 
 export const  fetchProductsStarted = () => {
@@ -17,7 +25,7 @@ export const  fetchProductsStarted = () => {
 
 export const fetchProductsSuccess = (products: Product[]) => {
     return {
-        type: FETCH_PRODUCTS_START,
+        type: FETCH_PRODUCTS_SUCCESS,
         payload: { products },
     }
 }
@@ -32,16 +40,25 @@ export const fetchProductsError = (errorMessage: string) => {
 
 export const fetchProductsThunk = () => async (dispatch: any) => {
     dispatch(fetchProductsStarted());
+    await new Promise(resolve => setTimeout(resolve, 2500));
     try {
-        const { data } = await axios.get('http://localhost:3001/products');
-        const json = JSON.parse(data);
-        dispatch(fetchProductsSuccess(json));
+        const response = await fetch('http://localhost:3001/products'); 
+        const json = await response.json();          
+        dispatch(fetchProductsSuccess(json));                  
+
     } catch (error: any) {
-        dispatch(fetchProductsError(error));
-    }
-   
-
-   // await new Promise(resolve => setTimeout(resolve, 2500));
-
-    
+        dispatch(fetchProductsError(error.message));
+    }    
 }
+
+export const filterProductsThunk = (texto: string) => async (dispatch: any) => {
+    dispatch(fetchProductsStarted());
+    try {
+        const response = await fetch(`http://localhost:3001/products?title_like=${texto}`); 
+        const json = await response.json();          
+        dispatch(fetchProductsSuccess(json));                  
+
+    } catch (error: any) {
+        dispatch(fetchProductsError(error.message));
+    } 
+} 

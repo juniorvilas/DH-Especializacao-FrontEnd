@@ -15,20 +15,22 @@ export const fetchProductsReducer = (state = initialState, action: ActionType) =
     switch (action.type) {
         case FETCH_PRODUCTS_START: 
         return {
-            isFetching: true
+            ...state,
+            isFetching: true,
         }
         case FETCH_PRODUCTS_SUCCESS: 
         return {
             ...state,
             isFetching: false,
             errorMessage: initialState.errorMessage,
-            products: action.payload.products
+            products: action.payload.products,
         }
         case FETCH_PRODUCTS_ERROR:
         return {
+            ...state,
             isFetching: false,
             products: initialState.products,
-            errorMessage: action.payload
+            errorMessage: action.payload,
         }
         default:
             return state;

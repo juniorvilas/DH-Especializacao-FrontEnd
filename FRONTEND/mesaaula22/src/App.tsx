@@ -53,15 +53,22 @@ const handlerOnChange = (e: any) =>  {
   return (
     <div className="App">
       <header className="App-header">
-       <input style={{margin: 20}} type="text" value={texto} onChange={handlerOnChange} />
-       <button type="button" onClick={handlerClick}>Pesquisar</button>
-        {prod.errorMessage && <span>Opa deu erro: {prod.errorMessage}</span>}
+        <div className="Div-Search">
+          <input placeholder="Enter your search" style={{margin: 20, padding:12, width: '100%', borderRadius: 8}} type="text" value={texto} onChange={handlerOnChange} />
+          <button className="App-button" type="button" onClick={handlerClick}>Pesquisar</button>
+        </div>
+       <div className="App-Product">
+       {prod.errorMessage && <span>Opa deu erro: {prod.errorMessage}</span>}
         {prod.isFetching && <span>Carregando...</span>}
         {prod.products && prod.products.map((product: any) => (
-            <div key={product.id}>
+            <div  key={product.id}>
               <p>{product.title}</p>
+              <p>R$ {product.price}</p>
+              <img src={product.image} alt={product.title} />
             </div>
           ))}
+       </div>    
+        
       </header>
     </div>
   );

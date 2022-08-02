@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useGetCharactersQuery } from 'features/characters/characters.endpoints';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import {
@@ -7,13 +7,23 @@ import {
 } from 'features/following/following.slices';
 import { FollowingButtonComponent } from 'features/following/button';
 import Character from 'features/characters/characters.types';
+import useDisclosure from 'hooks/useDisclosure';
+import Modal from 'features/modal/modal.component';
+
 
 export type CharactersComponentProps = {
   rickIDDS: number[];
 };
 
 const CharactersComponent: FC<CharactersComponentProps> = ({ rickIDDS }: CharactersComponentProps) => {
-  const { data: characters, error, isLoading } = useGetCharactersQuery( { ids: rickIDDS } );
+
+  const {
+    isOpen: modalIsOpen,
+    close: closeModal,
+    toggle: toggleModal
+  } = useDisclosure();
+  const [id, setId] = useState();
+  const { data: characters, error, isLoading } = useGetCharactersQuery({ ids: rickIDDS });
   const dispatch = useAppDispatch();
   const followingIds = useAppSelector((state) => state.following.followingIds);
 
@@ -29,12 +39,20 @@ const CharactersComponent: FC<CharactersComponentProps> = ({ rickIDDS }: Charact
     }
   };
 
+  function handlerClick(id: any) {
+    setId(id);
+    toggleModal();
+    return;
+  }
+
   return (
+    <>
+    <Modal visible={modalIsOpen} close={closeModal} id={id} characters={charactersArray} />
     <div className={'characters'}>
       {charactersArray.map((iHateThisChars) => (
         <div className={"card"} key={iHateThisChars.id}>
           <div className={"card-image"}>
-            <img src={iHateThisChars.image} />
+            <img src={iHateThisChars.image} onClick={() => handlerClick(iHateThisChars.id)}  />
           </div>
           <div className={"card-body"}>
             <span>{iHateThisChars.name}</span>
@@ -42,10 +60,13 @@ const CharactersComponent: FC<CharactersComponentProps> = ({ rickIDDS }: Charact
               isFav={followingIds.indexOf(iHateThisChars.id) >= 0}
               onToggleFavorite={(setFav) => onToggleFavorite(iHateThisChars, setFav)}
             />
+            
           </div>
         </div>
-      ))}
+      ))}      
     </div>
+    
+    </>
   );
 };
 

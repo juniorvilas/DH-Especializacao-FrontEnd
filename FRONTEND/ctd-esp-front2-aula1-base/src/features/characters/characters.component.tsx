@@ -47,7 +47,7 @@ const CharactersComponent: FC<CharactersComponentProps> = ({ rickIDDS }: Charact
 
   return (
     <>
-    <Modal visible={modalIsOpen} close={closeModal} id={id} characters={charactersArray} />
+    <Modal visible={modalIsOpen} close={closeModal} id={id} />
     <div className={'characters'}>
       {charactersArray.map((iHateThisChars) => (
         <div className={"card"} key={iHateThisChars.id}>
